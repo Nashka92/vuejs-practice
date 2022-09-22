@@ -1,16 +1,17 @@
 <script>
-	//ici j'exporte mon component que je vais appeler MenuItem
+	//ici j'exporte mon component que je vais appeler DisneyItem
 	// avec ses propriétés
 export default {
-	name: "MenuItem",
+	name: "DisneyItem",
+	//faire en typescript
 	props: ["addToShoppingCart", "image", "inStock", "name", "quantity"]
 }
 </script>
 
 <!-- Le template sera l'affichage de mon component -->
 <template>
-	<div class="menu-item">
-		<img class="menu-item__image" :src="image.source" :alt="image.alt" />
+	<div class="disney-item">
+		<img class="disney-item__image" :src="image.source" :alt="image.alt" />
 		<div>
 			<h3>{{ name }}</h3>
 			<!-- Condition s'il est en stock afficher "en stock",
@@ -23,6 +24,7 @@ export default {
 				va mettre dans son panier, j'utilise propriété "model" pour mettre à jour -->
 				<input v-model.number="quantity" id="add-item-quantity" type="number" />
 				<!-- propriété v-on (@click) pour augmenter le total du panier -->
+				
 				<button @click="addToShoppingCart(quantity)">
 					Ajouter au panier
 				</button>

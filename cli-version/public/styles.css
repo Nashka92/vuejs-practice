@@ -17,21 +17,21 @@
   font-style: italic;
 }
 
-.menu {
+.disney {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.menu-item {
+.disney-item {
   display: flex;
   width: 500px;
   justify-content: space-between;
   margin-bottom: 30px;
 }
 
-.menu-item__image {
+.disney-item__image {
   max-width: 300px;
 }
 
