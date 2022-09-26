@@ -1,12 +1,64 @@
+<!-- ["addToShoppingCart", "image", "inStock", "name", "quantity"] -->
 <script>
 //ici j'exporte mon component que je vais appeler DisneyItem
 // avec ses propriétés
 export default {
   name: "DisneyItem",
-  //faire en typescript
-  props: ["addToShoppingCart", "image", "inStock", "name", "quantity"],
+  props: {
+    addToShoppingCart: {
+      type: Function,
+      required: true,
+    },
+
+    image: {
+      type: Object,
+      required: true,
+    },
+
+    inStock: {
+      type: Boolean,
+      required: true,
+    },
+
+    name: {
+      type: String,
+      required: true,
+    },
+
+    price: {
+      type: Number,
+      required: true,
+    },
+
+    quantity: {
+      type: Number,
+      defaut: 1,
+    },
+  },
+
+  data() {
+    return {
+      onSale: false,
+    };
+  },
+  computed: {
+    generatedPrice() {
+      if (this.onSale) {
+        return (this.price * 0.9).toFixed(2);
+      } else {
+        return this.price;
+      }
+    },
+  },
+  beforeMount() {
+    const today = new Date().getDate();
+    if (today % 2 === 0) {
+      this.onSale = true;
+    }
+  },
 };
 </script>
+
 
 <!-- Le template sera l'affichage de mon component -->
 <template>
