@@ -4,6 +4,7 @@
 // avec ses propriétés
 export default {
   name: "DisneyItem",
+  //faire en typescript
   props: {
     addToShoppingCart: {
       type: Function,
@@ -58,7 +59,6 @@ export default {
   },
 };
 </script>
-
 
 <!-- Le template sera l'affichage de mon component -->
 <template>
