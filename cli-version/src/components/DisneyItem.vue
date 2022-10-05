@@ -1,16 +1,12 @@
 <!-- ["addToShoppingCart", "image", "inStock", "name", "quantity"] -->
 <script>
-//ici j'exporte mon component que je vais appeler DisneyItem
+//ici j'exporte mon component que je vais appeléééé DisneyItem
 // avec ses propriétés
 export default {
   name: "DisneyItem",
   //faire en typescript
   props: {
-    addToShoppingCart: {
-      type: Function,
-      required: true,
-    },
-
+    
     image: {
       type: Object,
       required: true,
@@ -51,6 +47,18 @@ export default {
       }
     },
   },
+
+  //$emet ce qui permet de générer un évenement personnalisé
+  //le composant parent (homeView) écoute l'événement du premier composant enfant
+  //puis exécute une bande de méthode sur celui-ci. Cette méthode obtient les
+  //données de l’événement en tant qu’argument, puis transmet
+  //ces données aux accessoires du 2eme composant enfant
+  methods: {
+    updateShoppingCart(quantity){
+      this.$emit('add-items-to-cart', quantity)
+    }
+  },
+
   beforeMount() {
     const today = new Date().getDate();
     if (today % 2 === 0) {
@@ -77,7 +85,7 @@ export default {
         <input v-model.number="quantity" id="add-item-quantity" type="number" />
         <!-- propriété v-on (@click) pour augmenter le total du panier -->
 
-        <button @click="addToShoppingCart(quantity)">
+        <button @click="updateShoppingCart(quantity)">
           Ajouter au panier
         </button>
       </div>

@@ -12,7 +12,7 @@
       <h2>Disney ears</h2>
       <DisneyItem
         v-for="item in disneyEars"
-        :addToShoppingCart="addToShoppingCart"
+        @add-items-to-cart = "addToShoppingCart"
         :name="item.name"
         :image="item.image"
         :quantity="item.quantity"
